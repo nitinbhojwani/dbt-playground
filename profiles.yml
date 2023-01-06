@@ -1,0 +1,18 @@
+# docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_USER=postgres -d postgres
+# docker exec -it postgres /bin/bash
+# psql -U postgres
+# CREATE DATABASE jaffle_shop
+# -- exit psql and docker container
+jaffle_shop:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: 127.0.0.1
+      user: postgres
+      password: password
+      port: 5432
+      dbname: postgres
+      schema: jaffle_shop
+      threads: 3
+      keepalives_idle: 0 # default 0, indicating the system default
